@@ -5,21 +5,18 @@
 
 using namespace std;
 
-const int ROWS = 10;
-const int COLS = 10;
+const int ROWS = 9;
+const int COLS = 9;
 const int MINES = 15;
 
-// Places mines randomly on the board
-void placeMines(vector<vector<char>>& board)
+void PlaceMines(vector<vector<char>> & board)
 {
     int minesPlaced = 0;
-
-    while (minesPlaced < MINES)
+    while(minesPlaced < MINES)
     {
         int row = rand() % ROWS;
         int col = rand() % COLS;
-
-        if (board[row][col] != '*')
+        if(board[row][col] != '*')
         {
             board[row][col] = '*';
             minesPlaced++;
@@ -27,32 +24,27 @@ void placeMines(vector<vector<char>>& board)
     }
 }
 
-// Counts mines around each cell
-vector<vector<int>> calculateAdjacentMines(
-    const vector<vector<char>>& board)
+vector<vector<int>> CalculateAdjacentMines(const vector<vector<char>> & board)
 {
-    vector<vector<int>> mineCount(
-        ROWS, vector<int>(COLS, 0));
-
-    for (int row = 0; row < ROWS; row++)
+    vector<vector<int>> mineCount(ROWS, vector<int>(COLS, 0));
+    for(int Ri = 0; Ri < ROWS; Ri++)
     {
-        for (int col = 0; col < COLS; col++)
+        for(int Cj = 0; Cj < COLS; Cj++)
         {
-            if (board[row][col] == '*')
-                continue;
-
-            for (int dr = -1; dr <= 1; dr++)
+            if(board[Ri][Cj] == '*')
             {
-                for (int dc = -1; dc <= 1; dc++)
+                continue;
+            }
+            for(int di = -1; di <= 1; di++)
+            {
+                for(int dj = -1; dj <= 1; dj++)
                 {
-                    int newRow = row + dr;
-                    int newCol = col + dc;
+                    int newRow = Ri + di;
+                    int newCol = Cj + dj;
 
-                    if (newRow >= 0 && newRow < ROWS &&
-                        newCol >= 0 && newCol < COLS &&
-                        board[newRow][newCol] == '*')
+                    if(newRow >= 0 && newRow < ROWS && newCol >= 0 && newCol < COLS && board[newRow][newCol] == '*')
                     {
-                        mineCount[row][col]++;
+                        mineCount[Ri][Cj]++;
                     }
                 }
             }
@@ -60,4 +52,5 @@ vector<vector<int>> calculateAdjacentMines(
     }
 
     return mineCount;
+
 }
