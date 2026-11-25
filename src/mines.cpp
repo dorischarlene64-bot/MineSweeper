@@ -1,13 +1,9 @@
-#include <iostream>
-#include <vector>
 #include <cstdlib>
 #include <ctime>
 
-using namespace std;
+#include "minesweeper.h"
 
-const int ROWS = 9;
-const int COLS = 9;
-const int MINES = 15;
+using namespace std;
 
 void PlaceMines(vector<vector<char>> & board)
 {
