@@ -1,16 +1,18 @@
 #include<iostream>
 #include<vector>
 
+#include"minesweeper.h"
+
 using namespace std;
 
-int ROWS = 9;
-int COLS = 9;
+const int ROWS = 9;
+const int COLS = 9;
 
 vector<vector<char>> CreateBoard()
 {
     vector<vector<char>> board(ROWS, vector<char>(COLS,'.'));
     return board;
-}
+};
 
 void DisplayBoard(const vector<vector<char>> & board)
 {
@@ -22,4 +24,11 @@ void DisplayBoard(const vector<vector<char>> & board)
         }
         cout << endl;
     }
+};
+
+int main() 
+{
+    vector<vector<char>> board = CreateBoard();
+    DisplayBoard(board);
+    return 0;
 }
